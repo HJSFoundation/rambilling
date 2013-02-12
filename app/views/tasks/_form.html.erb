@@ -15,7 +15,7 @@
     <div>
       <%= f.label :client_id, "Client" %>
     </div>
-    <%= collection_select :client_dropdown, :client_id, @clients, :id, :name, include_blank: true %>
+    <div><%= collection_select :client_dropdown, :client_id, @clients, :id, :name, include_blank: true %></div>
   </div>
   <br>
 
@@ -45,6 +45,6 @@
   <br>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit id: 'submit-task' %>
   </div>
 <% end %>
