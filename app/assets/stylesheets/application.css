@@ -11,7 +11,7 @@
  *= require_self
  *= require_tree .
  */
-
+/*
 
 select {
   font-size: 2.5em;
@@ -25,36 +25,6 @@ label {
 input {
   width: 100%;
   font-size: 3em;
-}
-
-input[type="submit"],
-  input[type="reset"],
-  input[type="button"] {
-    background: #eee; /* Old browsers */
-    background: #eee -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
-    background: #eee -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
-    background: #eee -webkit-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Chrome10+,Safari5.1+ */
-    background: #eee -o-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Opera11.10+ */
-    background: #eee -ms-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* IE10+ */
-    background: #eee linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* W3C */
-    border: 2px solid #aaa;
-    border-top: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    color: #444;
-    display: inline-block;
-    font-size: 3em;
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 0 1px rgba(255, 255, 255, .75);
-    cursor: pointer;
-    margin-bottom: 20px;
-    line-height: normal;
-    padding: 8px 10px;
-    width: 100%;
-    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #tasks-table th {
@@ -97,3 +67,4 @@ input[type="submit"],
 }
 
 
+*/
