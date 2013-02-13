@@ -1,10 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @client.name %>
-</p>
+<h1>Timesheet for <%= @client.name %> (<%= @client.total_time %> hrs to date)</h1>
 
+<% @client.projects.each do |project| %>
+  <div class="separate-clients table-title"><%= project.name %></div>
+  <table class="table-content">
+    <% project.tasks.each do |task| %>
+      <tr>
+        <td><%= task.description %></td>
+        <td><%= task.time %></td>
+      </tr>
+    <% end %>
+      <tr class="table-bottom"><td>Total Time:</td><td><%= project.total_time %></td></tr>
+  </table>
+<% end %>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Back to Task List', tasks_path %>

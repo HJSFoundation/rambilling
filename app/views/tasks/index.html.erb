@@ -1,3 +1,4 @@
+<div id="notice"><%= notice %></div>
 <h1>New task</h1>
 
 <%= render 'form' %>
@@ -5,22 +6,41 @@
 
 <table id="tasks-table">
   <tr>
+    <th>Client</th>
     <th>Project</th>
     <th>Time</th>
-    <th>Description</th>
-    <th></th>
+    <th>Details</th>
     <th></th>
     <th></th>
   </tr>
 
+<h1>Recent Tasks</h1>
 <% @tasks.each do |task| %>
   <tr>
-    <td><%= task.project.name %></td>
+    <td><%= link_to task.project.client.name, task.project.client %></td>
+    <td><%= link_to task.project.name, task.project %></td>
     <td><%= task.time %></td>
     <td><%= link_to 'show', task %></td>
   </tr>
 <% end %>
 </table>
+
+<h1>Timesheet Summary</h1>
+<div id="timesheet-summary">
+  <% @clients.each do |client| %>
+    <div class="separate-clients table-title">
+      <%= client.name %>
+    </div>
+      <table class="table-content separate-rows">
+        <% client.projects.each do |project| %>
+            <tr>
+              <td><%= project.name %></td>
+              <td><%= project.total_time %> hrs</td>
+            </tr>
+        <% end %>
+      </table>
+  <% end %>
+</div>
 
 <br />
 

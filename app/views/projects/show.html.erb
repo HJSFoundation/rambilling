@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<h1>Timesheet for <%= @project.name %></h1>
+<h2>Client: <%= @project.client.name %></h2>
 
-<p>
-  <b>Client:</b>
-  <%= @project.client_id %>
-</p>
-
+<table class="table-content">
+  <% @project.tasks.each do |task| %>
+    <tr>
+      <td><%= task.description %></td>
+      <td><%= task.time %></td>
+    </tr>
+  <% end %>
+    <tr class="table-bottom"><td>Total Time:</td><td><%= @project.total_time %></td></tr>
+</table>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back to Task List', tasks_path %>
