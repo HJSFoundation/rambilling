@@ -1,4 +1,11 @@
-<div id="notice"><%= notice %></div>
+<% if notice == 'created' %>
+  <div id="notice" class="alert alert-success">Your task was created successfully</div>
+<% elsif notice == 'error' %>
+  <div id="notice" class="alert alert-error">There was an error saving your task</div>
+<% elsif notice == 'deleted' %>
+  <div id="notice" class="alert alert">Your task was deleted successfully</div>
+
+<% end %>
 <h2>New task</h2>
 
 <%= render 'form' %>
@@ -12,7 +19,6 @@
     <th>Time</th>
     <th>Details</th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -21,6 +27,7 @@
     <td><%= link_to task.project.name, task.project %></td>
     <td><%= task.time %></td>
     <td><%= link_to 'show', task %></td>
+    <td><%= link_to image_tag('destroy.png'), task, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
   </tr>
 <% end %>
 </table>
@@ -31,6 +38,7 @@
       <table class="table">
         <tr>
           <th><%= client.name %></th>
+          <th></th>
         </tr>
         <% client.projects.each do |project| %>
             <tr>

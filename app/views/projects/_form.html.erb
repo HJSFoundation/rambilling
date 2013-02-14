@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <div><%= f.label :name %></div>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :client_id %><br />
+    <div><%= f.label :client_id %></div>
     <%= f.collection_select :client_id, Client.all, :id, :name %>
   </div>
   <div class="actions">
