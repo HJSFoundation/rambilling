@@ -17,5 +17,8 @@
   </table>
 <% end %>
 
-<%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-warning btn-large' %>
-<%= link_to 'Back to Dashboard', tasks_path, class: 'btn btn-primary btn-large' %>
+<div class="button-row">
+  <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-warning btn-large' %>
+  <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-large' %>
+</div>
+  <%= link_to 'Back to Dashboard', tasks_path, class: 'btn btn-primary btn-large' %>

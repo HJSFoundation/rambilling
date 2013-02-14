@@ -10,5 +10,9 @@
   <% end %>
     <tr class="bottom-row"><td>Total Time:</td><td><%= @project.total_time %></td></tr>
 </table>
-<%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning btn-large' %>
-<%= link_to 'Back to Dashboard', tasks_path, class: 'btn btn-primary btn-large' %>
+
+<div class="button-row">
+  <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning btn-large' %>
+  <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-large' %>
+</div>
+  <%= link_to 'Back to Dashboard', tasks_path, class: 'btn btn-primary btn-large' %>
