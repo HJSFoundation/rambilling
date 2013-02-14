@@ -3,6 +3,8 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
+    @client = Client.new
+    @page = 'clients'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +49,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to tasks_url, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to tasks_url, notice: 'There was an error saving your client' }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end

@@ -34,6 +34,22 @@
   </script>
 </head>
 <body>
+<% page = "active" if %>
+<ul class="nav nav-pills">
+  <li class="<%= "active" if @page == 'home'  %>">
+    <a href="/">Dashboard</a>
+  </li>
+  <li class="<%= "active" if @page == 'clients'  %>">
+    <a href="/clients">Clients</a>
+  </li>
+  <li class="<%= "active" if @page == 'projects'  %>">
+    <a href="/projects">Projects</a>
+  </li>
+  <li class="<%= "active" if @page == 'tasks'  %>">
+    <a href="/tasks_list">Tasks</a>
+  </li>
+</ul>
+
 
 <%= yield %>
 

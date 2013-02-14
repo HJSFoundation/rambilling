@@ -3,6 +3,9 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
+    @project = Project.new
+    @clients = Client.all
+    @page = 'projects'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,7 +50,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to tasks_url, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to tasks_url, notice: 'There was an error saving your project' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end

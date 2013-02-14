@@ -11,6 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+.bottom-row {
+  font-weight: bold;
+}
+
 /*
 
 select {

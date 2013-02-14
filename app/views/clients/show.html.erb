@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Timesheet for <%= @client.name %> (<%= @client.total_time %> hrs to date)</h1>
+<h2>Timesheet for <%= @client.name %></h2>
+<h3>(<%= @client.total_time %> hrs to date)</h3>
 
 <% @client.projects.each do |project| %>
-  <div class="separate-clients table-title"><%= project.name %></div>
-  <table class="table-content">
+  <table class="table">
+    <tr>
+      <th><%= link_to project.name, project %></th>
+      <th></th>
+    </tr>
     <% project.tasks.each do |task| %>
       <tr>
         <td><%= task.description %></td>
-        <td><%= task.time %></td>
+        <td><%= task.time %> hrs</td>
       </tr>
     <% end %>
-      <tr class="table-bottom"><td>Total Time:</td><td><%= project.total_time %></td></tr>
+      <tr class="bottom-row"><td>Total Time:</td><td><%= project.total_time %> hrs</td></tr>
   </table>
 <% end %>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back to Task List', tasks_path %>
+<%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-warning btn-large' %>
+<%= link_to 'Back to Dashboard', tasks_path, class: 'btn btn-primary btn-large' %>

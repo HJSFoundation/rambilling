@@ -1,10 +1,14 @@
+
+
+
 <% if notice == 'created' %>
   <div id="notice" class="alert alert-success">Your task was created successfully</div>
 <% elsif notice == 'error' %>
   <div id="notice" class="alert alert-error">There was an error saving your task</div>
 <% elsif notice == 'deleted' %>
   <div id="notice" class="alert alert">Your task was deleted successfully</div>
-
+<% elsif notice %>
+  <div id="notice" class="alert "><%= notice %></div>
 <% end %>
 <h2>New task</h2>
 

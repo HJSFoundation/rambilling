@@ -1,10 +1,10 @@
-<h1>Listing projects</h1>
+<h2>Projects</h2>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Client</th>
-    <th></th>
+    <th>Details</th>
     <th></th>
     <th></th>
   </tr>
@@ -12,14 +12,15 @@
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.client_id %></td>
+    <td><%= project.client.name %></td>
     <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to image_tag('destroy.png'), project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<h2>New Project</h2>
+<%= render 'form' %>
 
-<%= link_to 'New Project', new_project_path %>
+<br>
+<%= link_to 'Back to Dashboard', tasks_path, class: 'btn btn-primary btn-large' %>

@@ -1,6 +1,15 @@
 class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
+
+  def list
+    @tasks = Task.all
+    @task = Task.new
+    @clients = Client.all
+    @page = 'tasks'
+  end
+
+
   def index
     @tasks = Task.limit(10)
     @task = Task.new
@@ -8,6 +17,7 @@ class TasksController < ApplicationController
     @project = Project.new
     @clients = Client.all
     @client = Client.new
+    @page = 'home'
 
     respond_to do |format|
       format.html # index.html.erb

@@ -2,6 +2,7 @@ RamBilling::Application.routes.draw do
   root :to => 'Tasks#index'
 
   resources :tasks
+  get '/tasks_list' => 'Tasks#list', as: :tasks_list
 
 
   resources :projects

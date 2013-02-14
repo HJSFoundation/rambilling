@@ -3,6 +3,8 @@ class Client < ActiveRecord::Base
 
   has_many :projects
 
+  validates_presence_of :name
+
   def total_time
     time_array = self.projects.map { |project| project.total_time}
     time_array.sum
