@@ -3,15 +3,26 @@ class TasksController < ApplicationController
   # GET /tasks.json
 
   def list
-    @tasks = Task.all
+    @unbilled_tasks = Task.where(status: 'unbilled')
+    @billed_tasks = Task.where(status: 'billed')
     @task = Task.new
     @clients = Client.all
     @page = 'tasks'
   end
 
+  def edit_status
+    task = Task.find(params[:id])
+    task.status = params[:status]
+    task.save
+    if params[:coming_from] == 'index'
+      redirect_to tasks_url
+    else
+      redirect_to tasks_list_url
+    end
+  end
 
   def index
-    @tasks = Task.limit(10)
+    @recent_tasks = Task.where(status: 'unbilled').limit(10)
     @task = Task.new
     @projects = Project.all
     @project = Project.new
@@ -50,12 +61,15 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
+    @clients = Client.all
+    @projects = Project.all
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
+
 
     respond_to do |format|
       if @task.save

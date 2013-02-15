@@ -3,7 +3,7 @@ RamBilling::Application.routes.draw do
 
   resources :tasks
   get '/tasks_list' => 'Tasks#list', as: :tasks_list
-
+  get '/tasks/:id/edit_status' => 'Tasks#edit_status', as: :edit_task_status
 
   resources :projects
 

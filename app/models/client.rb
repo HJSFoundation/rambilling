@@ -1,12 +1,11 @@
 class Client < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :projects
+  has_many :projects, :dependent => :destroy
 
   validates_presence_of :name
 
   def total_time
-    time_array = self.projects.map { |project| project.total_time}
-    time_array.sum
+    self.projects.inject(0) { |sum, project| sum += project.total_time}
   end
 end

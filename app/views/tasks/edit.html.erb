@@ -1,6 +1,63 @@
 <h1>Editing task</h1>
 
-<%= render 'form' %>
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div>
+      <%= f.label :client_id, "Client" %>
+    </div>
+    <div><%= collection_select :client_dropdown, :client_id, @clients, :id, :name, include_blank: true %></div>
+  </div>
+  <br>
+
+  <div>
+    <div>
+      <%= f.label :project_id, "Project" %>
+    </div>
+    <%= f.grouped_collection_select :project_id, @clients, :projects, :name, :id, :name, include_blank: true%>
+  </div>
+  <br>
+
+  <div>
+    <div>
+      <%= f.label :status %>
+    </div>
+    <%= f.select :status, ['unbilled', 'billed'] %>
+  </div>
+  <br>
+
+  <div>
+    <div>
+      <%= f.label :description %>
+    </div>
+    <%= f.text_field :description %>
+  </div>
+  <br>
+
+  <div>
+    <div>
+      <%= f.label :time %>
+    </div>
+    <%= f.text_field :time %>
+  </div>
+  <br>
+
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-large btn-success' %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @task %> |
 <%= link_to 'Back', tasks_path %>

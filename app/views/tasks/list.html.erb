@@ -1,5 +1,6 @@
 <h2>Tasks</h2>
 
+<h3>Unbilled</h3>
 <table class="table">
   <tr>
     <th>Client</th>
@@ -9,7 +10,36 @@
     <th></th>
   </tr>
 
-<% @tasks.each do |task| %>
+<% @unbilled_tasks.each do |task| %>
+  <tr>
+    <td><%= link_to task.project.client.name, task.project.client %></td>
+    <td><%= link_to task.project.name, task.project %></td>
+    <td><%= task.time %></td>
+    <td><%= link_to 'show', task %></td>
+    <td><%= link_to image_tag('checkmark.png', size: '20x20'), edit_task_status_path(task.id, status: 'billed', coming_from: 'list') %></td>
+  </tr>
+<% end %>
+  <tr>
+    <td>Total time:</td>
+    <% unbilled_time = @unbilled_tasks.inject(0) do |sum, task|%>
+      <% sum += task.time  %>
+    <% end %>
+    <td><%= unbilled_time %></td>
+  </tr>
+</table>
+
+
+<h3>Billed</h3>
+<table class="table">
+  <tr>
+    <th>Client</th>
+    <th>Project</th>
+    <th>Time</th>
+    <th>Details</th>
+    <th></th>
+  </tr>
+
+<% @billed_tasks.each do |task| %>
   <tr>
     <td><%= link_to task.project.client.name, task.project.client %></td>
     <td><%= link_to task.project.name, task.project %></td>
@@ -19,6 +49,8 @@
   </tr>
 <% end %>
 </table>
+
+
 
 <h2>New Task</h2>
 <%= render 'form' %>
