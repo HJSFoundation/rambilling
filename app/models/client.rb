@@ -6,6 +6,7 @@ class Client < ActiveRecord::Base
   validates_presence_of :name
 
   def total_time
-    self.projects.inject(0) { |sum, project| sum += project.total_time}
+    total_time = self.projects.inject(0) { |sum, project| sum += project.total_time}
+    total_time.round(2)
   end
 end

@@ -4,17 +4,12 @@
   <tr>
     <th>Name</th>
     <th>Client</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
+    <td><%= link_to project.name, project %></td>
     <td><%= project.client.name %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to image_tag('destroy.png'), project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

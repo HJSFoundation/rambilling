@@ -3,16 +3,11 @@
 <table class="table">
   <tr>
     <th>Name</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @clients.each do |client| %>
   <tr>
-    <td><%= client.name %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to image_tag('destroy.png'), client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to client.name, client %></td>
   </tr>
 <% end %>
 </table>

@@ -7,6 +7,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :client_id, :name
 
   def total_time
-    self.tasks.inject(0) {|sum, task| sum += task.time }
+    total_time = self.tasks.inject(0) {|sum, task| sum += task.time }
+    total_time.round(2)
   end
 end
