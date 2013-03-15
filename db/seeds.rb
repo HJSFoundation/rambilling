@@ -6,9 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.destroy_all
 Client.destroy_all
 Project.destroy_all
 Task.destroy_all
+
+u = User.create([{name: 'test', password: 'test'}])
 
 clients = Client.create([{name: 'badass business'},
                          {name: 'nightmare client llc'}])

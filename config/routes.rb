@@ -1,4 +1,12 @@
 RamBilling::Application.routes.draw do
+
+  resources :users
+
+  get '/login' => 'Sessions#new', as: :login
+  post "sessions/create" => 'Sessions#create', as: :create_session
+  delete '/logout' => 'Sessions#destroy', as: :logout
+
+
   root :to => 'Tasks#index'
 
   resources :tasks
