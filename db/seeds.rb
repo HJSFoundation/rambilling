@@ -11,10 +11,10 @@ Client.destroy_all
 Project.destroy_all
 Task.destroy_all
 
-u = User.create([{name: 'test', password: 'test'}])
+u = User.create(name: 'test', password: 'test')
 
-clients = Client.create([{name: 'badass business'},
-                         {name: 'nightmare client llc'}])
+clients = Client.create([{name: 'badass_business', user_id: u.id},
+                         {name: 'nightmare client llc', user_id: u.id}])
 
 projects = Project.create([{name: "Immigration", client_id: clients[0].id},
                            {name: "Drunk Driving", client_id: clients[0].id},

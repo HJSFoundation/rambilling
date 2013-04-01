@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   attr_accessible :client_id, :name
 
   belongs_to :client
-  has_many :tasks,:dependent => :destroy
+  has_many :tasks, :dependent => :destroy
 
   validates_presence_of :client_id, :name
 

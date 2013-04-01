@@ -5,33 +5,10 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="MobileOptimized" content="width" />
   <meta name="HandheldFriendly" content="true" />
 
-  <script type="text/javascript">
-      (function() {
-
-        jQuery(function() {
-          var projects;
-          projects = $('#task_project_id').html();
-          console.log(projects);
-          return $('#client_dropdown_client_id').change(function() {
-            var client, options;
-            client = $('#client_dropdown_client_id :selected').text();
-            options = $(projects).filter("optgroup[label=" + client + "]").html();
-            console.log(options);
-            if (options) {
-              return $('#task_project_id').html(options);
-            } else {
-              return $('#task_project_id').empty();
-            }
-          });
-        });
-
-      }).call(this);
-
-  </script>
 </head>
 <body>
 <% page = "active" if %>
@@ -48,13 +25,31 @@
   <li class="<%= "active" if @page == 'tasks'  %>">
     <a href="/tasks_list">Tasks</a>
   </li>
-  <li>
-    <a href="/logout" data-method="delete" rel="nofollow">Logout</a>
-  </li>
+  <% if session[:user_id] %>
+    <li>
+      <a href="/logout" data-method="delete" rel="nofollow">Logout</a>
+    </li>
+  <% end %>
 </ul>
 
 
 <%= yield %>
 
+
+  <script type="text/javascript">
+      $(function() {
+        var projects;
+        projects = $('#task_project_id').html();
+        // console.log(projects);
+        return $('#client_dropdown_client_id').change(function() {
+          var client, options;
+          client = $('#client_dropdown_client_id :checked').text();
+          console.log(client)
+          options = $(projects).filter('optgroup[label="' + client + '"]').html();
+          // console.log(options);
+          return $('#task_project_id').html(options);
+        });
+      });
+  </script>
 </body>
 </html>

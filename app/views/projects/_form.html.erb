@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <div><%= f.label :client_id %></div>
-    <%= f.collection_select :client_id, Client.all, :id, :name %>
+    <%= f.collection_select :client_id, @clients, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit class: 'btn btn-large btn-success' %>

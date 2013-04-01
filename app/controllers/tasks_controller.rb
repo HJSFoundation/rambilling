@@ -3,10 +3,10 @@ class TasksController < ApplicationController
   # GET /tasks.json
 
   def list
-    @unbilled_tasks = Task.where(status: 'unbilled')
-    @billed_tasks = Task.where(status: 'billed')
+    @unbilled_tasks = @current_user.tasks.where(status: 'unbilled')
+    @billed_tasks = @current_user.tasks.where(status: 'billed')
     @task = Task.new
-    @clients = Client.all
+    @clients = @current_user.clients
     @page = 'tasks'
   end
 
@@ -22,11 +22,11 @@ class TasksController < ApplicationController
   end
 
   def index
-    @recent_tasks = Task.where(status: 'unbilled').limit(10)
+    @recent_tasks = @current_user.tasks.where(status: 'unbilled').limit(10)
     @task = Task.new
     @projects = Project.all
     @project = Project.new
-    @clients = Client.all
+    @clients = @current_user.clients
     @client = Client.new
     @page = 'home'
 
@@ -69,8 +69,6 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to tasks_url, notice: 'created' }

@@ -2,9 +2,9 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = @current_user.projects
     @project = Project.new
-    @clients = Client.all
+    @clients = @current_user.clients
     @page = 'projects'
 
     respond_to do |format|

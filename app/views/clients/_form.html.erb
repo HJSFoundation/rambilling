@@ -17,6 +17,9 @@
     </div>
     <%= f.text_field :name %>
   </div>
+  <div>
+    <%= f.hidden_field :user_id, value: @current_user.id %>
+  </div>
   <div class="actions">
     <%= f.submit class: 'btn btn-large btn-success' %>
   </div>
